@@ -1,0 +1,92 @@
+use newMOngo
+switched to db newMOngo
+db.createCollection("books")
+{ ok: 1 }
+
+db.books.insertMany([
+{title:"C", author:"Tom", genre:"A", published_year:2007, availableCopies:603},
+
+{title:"C++", author:"Jerry", genre:"b", published_year:2031, availableCopies:63},
+
+{title:"java", author:"RG", genre:"g", published_year:1034, availableCopies:03},
+
+{title:"Python", author:"EFG", genre:"A", published_year:2007, availableCopies:60},
+
+{title:"html", author:"Tom", genre:"A", published_year:7895, availableCopies:3}
+
+])
+
+
+
+db.books.find();
+
+
+db.books.findOne({published_year: 2007})
+
+
+
+db.books.findOne({author: 'EFG'})
+{
+  _id: ObjectId('6a1d076011b715fbb7ac3ec6'),
+  title: 'Python',
+  author: 'EFG',
+  genre: 'A',
+  published_year: 2007,
+  availableCopies: 60
+}
+//q8
+db.books.update({title: 'html'},{$inc:{availableCopies: 1}})
+DeprecationWarning: Collection.update() is deprecated. Use updateOne, updateMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.books.update({title: 'html'},{$inc:{availableCopies: -1}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.books.deleteOne({ author: 'Tom'})
+{
+  acknowledged: true,
+  deletedCount: 1
+}
+db.books.deleteMany({availableCopies: 3})
+{
+  acknowledged: true,
+  deletedCount: 2
+}
+newMOngo
+Selection deleted
+
+
+
+db.books.update({title: 'html'},{$inc:{availableCopies: -1}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.books.deleteOne({ author: 'Tom'})
+{
+  acknowledged: true,
+  deletedCount: 1
+}
+db.books.deleteMany({availableCopies: 3})
+{
+  acknowledged: true,
+  deletedCount: 2
+}
+newMOngo
+Selection deleted
+
+
+
